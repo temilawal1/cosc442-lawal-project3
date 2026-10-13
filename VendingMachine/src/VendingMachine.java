@@ -161,7 +161,7 @@ public class VendingMachine {
 	public void insertMoney(double amount) throws VendingMachineException {
 		if (amount < 0)
 			throw new VendingMachineException(VendingMachine.INVALID_AMOUNT_MESSAGE);
-		this.balance -= amount; // INJECTED FAULT FOR COVERAGE EXPERIMENT
+		this.balance += amount; 
 	}
 
 	/**
