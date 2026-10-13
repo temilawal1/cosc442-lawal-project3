@@ -34,13 +34,13 @@ public class VendingMachineTest {
     // checks all valid codes!
     @ParameterizedTest
     @ValueSource(strings = { "A", "B", "C", "D" })
-    public void testAddItem_ValidCode(String code) throws VendingMachineException {
+    public void testAddItemValidCode(String code) throws VendingMachineException {
         machine.addItem(item1, code);
         assertEquals(item1, machine.getItem(code));
     }
 
     @Test
-    public void testAddItem_InvalidCode() {
+    public void testAddItemInvalidCode() {
 
         assertThrows(VendingMachineException.class, () -> {
             machine.addItem(item1, "E");
@@ -48,7 +48,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void testAddItem_OccupiedSlot() {
+    public void testAddItemOccupiedSlot() {
 
         machine.addItem(item1, "A"); // partial arrange
 
@@ -60,7 +60,7 @@ public class VendingMachineTest {
 
     @ParameterizedTest
     @ValueSource(strings = { "A", "B", "C", "D" })
-    public void testGetItem_ValidCode(String code) throws VendingMachineException {
+    public void testGetItemValidCode(String code) throws VendingMachineException {
 
         machine.addItem(item1, code);
 
@@ -68,14 +68,14 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void testGetItem_InvalidCode() {
+    public void testGetItemInvalidCode() {
         assertThrows(VendingMachineException.class, () -> {
             machine.getItem("E");
         });
     }
 
     @Test
-    public void testGetItem_EmptySlot() throws VendingMachineException {
+    public void testGetItemEmptySlot() throws VendingMachineException {
 
         assertEquals(null, machine.getItem("A"));
     }
@@ -83,21 +83,21 @@ public class VendingMachineTest {
 
     @ParameterizedTest
     @ValueSource(strings = { "A", "B", "C", "D" })
-    public void testRemoveItem_ValidCode(String code) throws VendingMachineException {
+    public void testRemoveItemValidCode(String code) throws VendingMachineException {
         machine.addItem(item1, code);
         assertEquals(item1, machine.removeItem(code), "returns removed item");
         assertEquals(null, machine.getItem(code), "returns null: slot empty");
     }
 
     @Test
-    public void testRemoveItem_InvalidCode() {
+    public void testRemoveItemInvalidCode() {
         assertThrows(VendingMachineException.class, () -> {
             machine.removeItem("E");
         });
     }
 
     @Test
-    public void testRemoveItem_EmptySlot() {
+    public void testRemoveItemEmptySlot() {
         assertThrows(VendingMachineException.class, () -> {
             machine.removeItem("A");
         });
@@ -147,7 +147,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void testMakePurchase_ExactFunds() throws VendingMachineException {
+    public void testMakePurchaseExactFunds() throws VendingMachineException {
         machine.addItem(item1, "A");
         machine.insertMoney(1.50);
 
@@ -155,7 +155,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void testMakePurchase_NotEnoughFunds() throws VendingMachineException {
+    public void testMakePurchaseNotEnoughFunds() throws VendingMachineException {
         machine.addItem(item1, "A");
         machine.insertMoney(1.00);
 
@@ -166,7 +166,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void testMakePurchase_EmptySlot() throws VendingMachineException {
+    public void testMakePurchaseEmptySlot() throws VendingMachineException {
         assertFalse(machine.makePurchase("A"));
         // no slot initialized so should just return false
         // initial test passed
@@ -182,7 +182,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void testReturnChange_NoBalance() {
+    public void testReturnChangeNoBalance() {
         assertEquals(0.00, machine.returnChange()); // i assume this will work since above test worked
         assertEquals(0.00, machine.getBalance());
         // bang initial test passed
