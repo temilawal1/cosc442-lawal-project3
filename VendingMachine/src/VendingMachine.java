@@ -159,7 +159,7 @@ public class VendingMachine {
 	 *                                 amount is < 0
 	 */
 	public void insertMoney(double amount) throws VendingMachineException {
-		if (amount < 1)
+		if (amount < 0)
 			throw new VendingMachineException(VendingMachine.INVALID_AMOUNT_MESSAGE);
 		this.balance += amount;
 	}
@@ -196,7 +196,7 @@ public class VendingMachine {
 		VendingMachineItem item = getItem(code);
 		if ((item != null) && (this.balance >= item.getPrice())) {
 			removeItem(code);
-			this.balance -= item.getPrice();
+			this.balance -= item.getPrice(); 
 			returnCode = true;
 		}
 		return returnCode;
