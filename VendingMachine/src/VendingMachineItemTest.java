@@ -27,6 +27,13 @@ public class VendingMachineItemTest {
     }
 
     @Test
+    public void testFreeItem() {
+       VendingMachineItem item2 = new VendingMachineItem("free", 0.00);
+
+       assertEquals(0.00, item2.getPrice());
+    }
+
+    @Test
     public void testGetName() {
 
         assertEquals("oreos", item.getName());
