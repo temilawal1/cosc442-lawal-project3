@@ -1,1 +1,3 @@
- 
+ 1. the quality of the generated tests was fine. initially, i used chatgpt and had to edit multiple lines of codes because it was entering invalid values into tests. (ex: testing insert multiple money but trying to insert 50 cents even though the minimum is 1 dollar). There were issues, and chatgpt generated 45 tests, so i switched to gemini, and it generated less tests (19) that all passed. The chatpgt tests did include parameterized tests, where the gemini tests did not. The coverage was surprisingly 100%. That is also why I switched. I was certain the AI wouldn't get 100% coverage, so I swapped to gemini but when the tests ran they covered everything.
+2. my tests included parameterized tests, tear down, and I think the names of my code are much better than the ai generated ones. the coverage of both are 100%, and i would say the test quality of the ai generated code (from gemini) is lower than my tests.
+3. coverage-guided prompting did improve the
