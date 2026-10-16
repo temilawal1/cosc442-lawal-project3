@@ -6,15 +6,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class VendingMachineExceptionTest {
+public class VendingMachineExceptionTest_AI {
 
-    private VendingMachineException exception1;
-    private VendingMachineException exception2;
+    private VendingMachineException_AI exception1;
+    private VendingMachineException_AI exception2;
 
     @BeforeEach
     public void setUp() {
-        exception1 = new VendingMachineException();
-        exception2 = new VendingMachineException("error");
+        exception1 = new VendingMachineException_AI();
+        exception2 = new VendingMachineException_AI("error");
     }
 
     @AfterEach
@@ -35,16 +35,16 @@ public class VendingMachineExceptionTest {
 
     @Test
     public void testConstructorWithEmptyMessage() {
-        VendingMachineException exception =
-                new VendingMachineException("");
+        VendingMachineException_AI exception =
+                new VendingMachineException_AI("");
 
         assertEquals("", exception.getMessage());
     }
 
     @Test
     public void testConstructorWithNullMessage() {
-        VendingMachineException exception =
-                new VendingMachineException(null);
+        VendingMachineException_AI exception =
+                new VendingMachineException_AI(null);
 
         assertNull(exception.getMessage());
     }

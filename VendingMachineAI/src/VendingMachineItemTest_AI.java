@@ -9,13 +9,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class VendingMachineItemTest {
+public class VendingMachineItemTest_AI {
 
-    private VendingMachineItem item;
+    private VendingMachineItem_AI item;
 
     @BeforeEach
     public void setUp() {
-        item = new VendingMachineItem("Chips", 1.50);
+        item = new VendingMachineItem_AI("Chips", 1.50);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class VendingMachineItemTest {
 
     @Test
     public void testConstructorWithZeroPrice() {
-        VendingMachineItem free = new VendingMachineItem("Free", 0.0);
+        VendingMachineItem_AI free = new VendingMachineItem_AI("Free", 0.0);
 
         assertEquals("Free", free.getName());
         assertEquals(0.0, free.getPrice(), 0.001);
@@ -34,7 +34,7 @@ public class VendingMachineItemTest {
 
     @Test
     public void testConstructorWithNullName() {
-        VendingMachineItem unnamed = new VendingMachineItem(null, 1.0);
+        VendingMachineItem_AI unnamed = new VendingMachineItem_AI(null, 1.0);
 
         assertNull(unnamed.getName());
         assertEquals(1.0, unnamed.getPrice(), 0.001);
@@ -51,8 +51,8 @@ public class VendingMachineItemTest {
     public void testConstructorWithValidPrices(
             double price, double expected) {
 
-        VendingMachineItem valid =
-                new VendingMachineItem("Item", price);
+        VendingMachineItem_AI valid =
+                new VendingMachineItem_AI("Item", price);
 
         assertEquals(expected, valid.getPrice(), 0.001);
     }
@@ -62,9 +62,9 @@ public class VendingMachineItemTest {
     public void testConstructorWithNegativePriceThrowsException(
             double price) {
 
-        VendingMachineException exception = assertThrows(
-                VendingMachineException.class,
-                () -> new VendingMachineItem("Item", price)
+        VendingMachineException_AI exception = assertThrows(
+                VendingMachineException_AI.class,
+                () -> new VendingMachineItem_AI("Item", price)
         );
 
         assertEquals(
